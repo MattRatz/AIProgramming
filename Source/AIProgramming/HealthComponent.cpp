@@ -1,0 +1,58 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "HealthComponent.h"
+
+// Sets default values for this component's properties
+UHealthComponent::UHealthComponent()
+{
+	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
+	// off to improve performance if you don't need them.
+	PrimaryComponentTick.bCanEverTick = true;
+
+	// ...
+}
+void UHealthComponent::BeginPlay()
+{
+	Super::BeginPlay(); 
+	if (MaxHealth != CurrentHealth)
+	{
+		CurrentHealth = MaxHealth; 
+	}
+}
+
+// Called when the game startsPlea
+
+void UHealthComponent::TakeDamage(int32 DamageIncoming)
+{
+	CurrentHealth -= DamageIncoming;
+	if (CurrentHealth <= 0)
+	{
+		OnDeath(); 
+	}
+	UE_LOG(LogTemp, Log, TEXT("Boss health is %i"), CurrentHealth);
+}
+
+void UHealthComponent::GainHealth(int32 HealthIncoming)
+{
+	CurrentHealth += HealthIncoming;
+	if (CurrentHealth > MaxHealth)
+	{
+		int32 OverHealHealth = MaxHealth - CurrentHealth; 
+		CurrentHealth -= OverHealHealth; 
+	}
+}
+
+void UHealthComponent::OnDeath()
+{
+	IsDead = true; 
+}
+
+// Called every frame
+void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+{
+	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+
+	// ...
+}
+
