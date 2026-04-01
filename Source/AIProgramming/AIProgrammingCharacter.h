@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "HealthComponent.h"
 #include "Logging/LogMacros.h"
 #include "AIProgrammingCharacter.generated.h"
 
@@ -28,6 +29,7 @@ class AAIProgrammingCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FollowCamera;
 	
+	
 	/** MappingContext */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputMappingContext* DefaultMappingContext;
@@ -47,6 +49,8 @@ class AAIProgrammingCharacter : public ACharacter
 public:
 	AAIProgrammingCharacter();
 	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Defaults|Health")
+	UHealthComponent* HealthComponent;
 
 protected:
 

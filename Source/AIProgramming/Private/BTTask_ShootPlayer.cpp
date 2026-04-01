@@ -31,12 +31,11 @@ EBTNodeResult::Type UBTTask_ShootPlayer::ExecuteTask(UBehaviorTreeComponent& Own
 	{
 		return EBTNodeResult::Failed;
 	}
-	else
-	{
+
 		FVector BossForwardVector = Boss->GetActorForwardVector(); 
-		FVector BossLocation = Controller->K2_GetActorLocation(); 
+		FVector BossLocation = Boss->GetActorLocation(); 
 		FVector SpawnLocationFromBoss = BossLocation + (BossForwardVector * 200.f); 
-		
+	
 		FVector PlayerLocation = Target->GetActorLocation(); 
 		FVector PlayerVelocity = Target->GetVelocity(); 
 		
@@ -44,6 +43,7 @@ EBTNodeResult::Type UBTTask_ShootPlayer::ExecuteTask(UBehaviorTreeComponent& Own
 		FVector PredictedLocation = PlayerLocation + PlayerVelocity * ShotChargeTime; 
 		FVector ShotDirection = (PredictedLocation - BossLocation).GetSafeNormal(); 
 		FRotator SpawnRotation = (PredictedLocation - BossLocation).Rotation(); 
+		UE_LOG(LogTemp, Log, TEXT("Current boss location %s"), *BossLocation.ToString()); 
 		
 		if (Boss->BeamShot)
 		{
@@ -65,10 +65,10 @@ EBTNodeResult::Type UBTTask_ShootPlayer::ExecuteTask(UBehaviorTreeComponent& Own
 		}
 		return EBTNodeResult::Succeeded; 
 		
-	}
+	
 
 	
-	return EBTNodeResult::Succeeded; 
+
 
 	
 	

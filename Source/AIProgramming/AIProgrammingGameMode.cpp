@@ -12,4 +12,5 @@ AAIProgrammingGameMode::AAIProgrammingGameMode()
 	{
 		DefaultPawnClass = PlayerPawnBPClass.Class;
 	}
+
 }
