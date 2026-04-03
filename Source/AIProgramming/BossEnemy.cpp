@@ -27,6 +27,7 @@ void ABossEnemy::BeginPlay()
 	OnPhaseChanged(1);
 	//HealthComponent->TakeDamage(20);
 	FindPathToTarget(GetActorLocation() + FVector(500.f,0.f,0.f));
+	BossInitialized(HealthComponent);
 	
 	
 }

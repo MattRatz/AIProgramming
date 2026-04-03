@@ -4,17 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "CustomPlayerController.generated.h"
+#include "CustomPC.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class AIPROGRAMMING_API ACustomPlayerController : public APlayerController
+class AIPROGRAMMING_API ACustomPC : public APlayerController
 {
 	GENERATED_BODY()
-	ACustomPlayerController(); 
 	
+protected:
 	virtual void BeginPlay() override; 
+	
+	UFUNCTION(BlueprintImplementableEvent, Category = "GameSetup")
+	void BP_OnBeginPlay();
 	
 };

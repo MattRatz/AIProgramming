@@ -2,6 +2,7 @@
 
 #include "AIProgrammingGameMode.h"
 #include "AIProgrammingCharacter.h"
+#include "CustomPC.h"
 #include "UObject/ConstructorHelpers.h"
 
 AAIProgrammingGameMode::AAIProgrammingGameMode()
@@ -12,5 +13,6 @@ AAIProgrammingGameMode::AAIProgrammingGameMode()
 	{
 		DefaultPawnClass = PlayerPawnBPClass.Class;
 	}
+	
 
 }

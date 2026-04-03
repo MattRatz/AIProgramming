@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "HealthComponent.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthUpdated, int32, NewHealth, UHealthComponent*, OwnerComponentToUpdate);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class AIPROGRAMMING_API UHealthComponent : public UActorComponent
@@ -23,6 +24,8 @@ public:
 	int32 CurrentHealth;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
 	bool IsDead = false; 
+	UPROPERTY(BlueprintAssignable, Category = "Health Functions")
+	FOnHealthUpdated OnHealthUpdated; 
 
 	UFUNCTION(BlueprintCallable, Category = "Health Functions")
 	void TakeDamage(int32 DamageIncoming); 
@@ -30,6 +33,7 @@ public:
 	void GainHealth(int32 HealthIncoming); 
 	UFUNCTION(BlueprintCallable, Category = "Health Functions")
 	void OnDeath();
+
 
 protected:
 	// Called when the game starts

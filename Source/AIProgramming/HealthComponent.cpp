@@ -18,6 +18,8 @@ void UHealthComponent::BeginPlay()
 	if (MaxHealth != CurrentHealth)
 	{
 		CurrentHealth = MaxHealth; 
+		UE_LOG(LogTemp, Warning, TEXT("CurrentHealth is %i"), CurrentHealth);
+		UE_LOG(LogTemp, Warning, TEXT("MaxHealth is %i"), MaxHealth);
 	}
 }
 
@@ -31,6 +33,7 @@ void UHealthComponent::TakeDamage(int32 DamageIncoming)
 		OnDeath(); 
 	}
 	UE_LOG(LogTemp, Log, TEXT("Boss health is %i"), CurrentHealth);
+	OnHealthUpdated.Broadcast(CurrentHealth, this);
 }
 
 void UHealthComponent::GainHealth(int32 HealthIncoming)
@@ -41,10 +44,12 @@ void UHealthComponent::GainHealth(int32 HealthIncoming)
 		int32 OverHealHealth = MaxHealth - CurrentHealth; 
 		CurrentHealth -= OverHealHealth; 
 	}
+	OnHealthUpdated.Broadcast(CurrentHealth, this);
 }
 
 void UHealthComponent::OnDeath()
 {
+	OnHealthUpdated.Broadcast(CurrentHealth, this);
 	IsDead = true; 
 }
 

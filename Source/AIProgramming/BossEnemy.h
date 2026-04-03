@@ -45,6 +45,8 @@ public:
 	void DrawSphere(); 
 	UFUNCTION(BlueprintCallable, Category = "Boss|AI")
 	void FindPathToTarget(FVector TargetLocation);
+	UFUNCTION(BlueprintImplementableEvent, Category = "Boss|AI")
+	void BossInitialized(UHealthComponent* EnemyHealthComponent);
 
 
 
