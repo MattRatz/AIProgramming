@@ -15,7 +15,7 @@ UHealthComponent::UHealthComponent()
 void UHealthComponent::BeginPlay()
 {
 	Super::BeginPlay(); 
-	if (MaxHealth != CurrentHealth)
+	if (CurrentHealth != MaxHealth)
 	{
 		CurrentHealth = MaxHealth; 
 		UE_LOG(LogTemp, Warning, TEXT("CurrentHealth is %i"), CurrentHealth);
