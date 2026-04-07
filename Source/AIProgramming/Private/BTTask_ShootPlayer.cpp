@@ -20,6 +20,10 @@ EBTNodeResult::Type UBTTask_ShootPlayer::ExecuteTask(UBehaviorTreeComponent& Own
 	ABossEnemy* Boss = Cast<ABossEnemy>(EnemyBoss);
 	
 	AAIController*Controller = OwnerComp.GetAIOwner();
+	if (Boss->HealthComponent->IsDead)
+	{
+		return EBTNodeResult::Failed;
+	}
 	if (!Controller)
 	{
 		return EBTNodeResult::Failed;

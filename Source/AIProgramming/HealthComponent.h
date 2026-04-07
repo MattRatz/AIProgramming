@@ -8,6 +8,7 @@
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthUpdated, int32, NewHealth, UHealthComponent*, OwnerComponentToUpdate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCharacterDeath);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnHealthGained); 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class AIPROGRAMMING_API UHealthComponent : public UActorComponent
@@ -29,6 +30,8 @@ public:
 	FOnHealthUpdated OnHealthUpdated; 
 	UPROPERTY(BlueprintAssignable, Category = "Health Functions")
 	FOnCharacterDeath OnCharacterDeath; 
+	UPROPERTY(BlueprintAssignable)
+	FOnHealthGained OnHealthGained; 
 
 	UFUNCTION(BlueprintCallable, Category = "Health Functions")
 	void TakeDamage(int32 DamageIncoming); 

@@ -25,7 +25,7 @@ class AIPROGRAMMING_API UBTTask_NormalShooting : public UBTTaskNode
 	
 	UBehaviorTreeComponent* CachedOwnerComp;
 	FTimerHandle SpawnTimer; 
-	int32 RandomNumberOfShots = FMath::RandRange(1,7); 
+	int32 RandomNumberOfShots;
 	
 	UFUNCTION()
 	void SpawnBullet(); 

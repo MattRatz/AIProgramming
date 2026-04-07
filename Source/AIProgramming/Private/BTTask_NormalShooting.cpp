@@ -43,8 +43,6 @@ EBTNodeResult::Type UBTTask_NormalShooting::ExecuteTask(UBehaviorTreeComponent& 
 		return EBTNodeResult::Failed; 
 	}
 	RandomNumberOfShots = FMath::RandRange(1,7); 
-
-	
 	
 	World->GetTimerManager().SetTimer(SpawnTimer, this, &UBTTask_NormalShooting::SpawnBullet, .5f, true); 
 	
@@ -60,17 +58,22 @@ void UBTTask_NormalShooting::SpawnBullet()
 		FinishLatentTask(*CachedOwnerComp, EBTNodeResult::Failed);
 	}
 	APawn* Boss = Controller->GetPawn();
+	FVector BossLocation;
 	if (!Boss)
 	{
 		FinishLatentTask(*CachedOwnerComp, EBTNodeResult::Failed);
 	}
+	else
+	{
+		BossLocation = Boss->GetActorLocation(); 
+	}
+	
 	if (!World)
 	{
 		FinishLatentTask(*CachedOwnerComp, EBTNodeResult::Failed);
 	}
 	
 	AActor* TargetPlayer = Cast<AActor>(Controller->GetBlackboardComponent()->GetValueAsObject(TEXT("TargetActor")));
-	
 	if (!TargetPlayer)
 	{
 		FinishLatentTask(*CachedOwnerComp, EBTNodeResult::Failed);
@@ -78,7 +81,6 @@ void UBTTask_NormalShooting::SpawnBullet()
 	
 	
 	FVector TargetLocation = TargetPlayer->GetActorLocation();
-	FVector BossLocation = Boss->GetActorLocation(); 
 	FRotator SpawnRotation = UKismetMathLibrary::FindLookAtRotation(BossLocation, TargetLocation); 
 	float BulletSpread = 5.0f; 
 	float RandomPitch = FMath::RandRange(-BulletSpread, BulletSpread);
