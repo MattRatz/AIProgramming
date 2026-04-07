@@ -31,6 +31,7 @@ void ABossAIController::OnPossess(APawn* InPawn)
 	}); 
 }
 
+
 void ABossAIController::UpdateChase()
 {
 

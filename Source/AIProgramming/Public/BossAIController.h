@@ -35,7 +35,8 @@ class AIPROGRAMMING_API ABossAIController : public AAIController
 	FTimerHandle ChaseTimer; 
 	
 protected:
-virtual void OnPossess(APawn* InPawn) override; 
+
+	virtual void OnPossess(APawn* InPawn) override; 
 	
 	
 };

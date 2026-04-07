@@ -44,12 +44,14 @@ void UHealthComponent::GainHealth(int32 HealthIncoming)
 		int32 OverHealHealth = MaxHealth - CurrentHealth; 
 		CurrentHealth -= OverHealHealth; 
 	}
-	OnHealthUpdated.Broadcast(CurrentHealth, this);
+	// I am passing through HealthIncoming here for an edge case in my damage indicator WBP
+	OnHealthUpdated.Broadcast(HealthIncoming, this);
 }
 
 void UHealthComponent::OnDeath()
 {
 	OnHealthUpdated.Broadcast(CurrentHealth, this);
+	OnCharacterDeath.Broadcast(); 
 	IsDead = true; 
 }
 

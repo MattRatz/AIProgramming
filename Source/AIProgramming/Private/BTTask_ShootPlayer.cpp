@@ -39,10 +39,12 @@ EBTNodeResult::Type UBTTask_ShootPlayer::ExecuteTask(UBehaviorTreeComponent& Own
 		FVector PlayerLocation = Target->GetActorLocation(); 
 		FVector PlayerVelocity = Target->GetVelocity(); 
 		
-		float ShotChargeTime = 1.5f; 
+		float ShotChargeTime = .75f; 
 		FVector PredictedLocation = PlayerLocation + PlayerVelocity * ShotChargeTime; 
+		PredictedLocation.Z = FMath::Clamp(PredictedLocation.Z, 0.0f, PredictedLocation.Z);
 		FVector ShotDirection = (PredictedLocation - BossLocation).GetSafeNormal(); 
 		FRotator SpawnRotation = (PredictedLocation - BossLocation).Rotation(); 
+	
 		UE_LOG(LogTemp, Log, TEXT("Current boss location %s"), *BossLocation.ToString()); 
 		
 		if (Boss->BeamShot)
@@ -61,16 +63,8 @@ EBTNodeResult::Type UBTTask_ShootPlayer::ExecuteTask(UBehaviorTreeComponent& Own
 		if (SpawnedBeam)
 		{
 			SpawnedBeam->InitializeBeam(BossLocation, PredictedLocation); 
-			
 		}
 		return EBTNodeResult::Succeeded; 
-		
-	
-
-	
-
-
-	
 	
 	
 }

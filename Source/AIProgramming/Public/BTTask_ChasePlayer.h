@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "NavigationPath.h"
+#include "NavigationSystem.h"
+#include "AIController.h"
 #include "BehaviorTree/BTTaskNode.h"
 #include "BTTask_ChasePlayer.generated.h"
 
@@ -18,4 +21,5 @@ class AIPROGRAMMING_API UBTTask_ChasePlayer : public UBTTaskNode
 	
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override; 
 	
+
 };
