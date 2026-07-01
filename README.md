@@ -1,5 +1,3 @@
-This AIProgramming project was an in school assessment, to make a multi stage boss fight in Unreal Engine C++. 
-
 This project was me learning C++ in Unreal Engine 5.4, it was a school project where we were tasked with making a new class from C++, as well as 2 AI tasks. 
 
 I really wanted to see what I was capable of after only using Blueprint in Unreal so far. The transition was smoother than I expected, and I think I was able to do some cool stuff in about a week. 
