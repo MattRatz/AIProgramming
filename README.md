@@ -1,8 +1,10 @@
 This AIProgramming project was an in school assessment, to make a multi stage boss fight in Unreal Engine C++. 
 
-The only things I didn't make 100% myself in this project was the original construction of the "Boss" Character in this project and a simple MoveToLocation task. 
+This project was me learning C++ in Unreal Engine 5.4, it was a school project where we were tasked with making a new class from C++, as well as 2 AI tasks. 
 
-Our teacher had made the character alongside with us as an excercise, to help us understand how Unreal Engine works with C++.
+I really wanted to see what I was capable of after only using Blueprint in Unreal so far. The transition was smoother than I expected, and I think I was able to do some cool stuff in about a week. 
+
+
 
 
 Things I'm most proud of in this project
@@ -13,6 +15,7 @@ Things I'm most proud of in this project
     b.) The most diffucult part was to not fire the X number of shots all at once at the player. This made me store a cached reference to the AI Controller and the Task Node,
         to finish task outside of the AI Task Nodefunction.
           i.) I did this using a delay between each shot, which was only possible outside of the Task Node function.
+
  
   2.) A High damaging boss "Beam Shot" that predicts player movement and shows an indicator of where the shot is going to hit
     
